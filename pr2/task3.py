@@ -15,7 +15,7 @@ testDataArr = [
 ]
 
 def validateIp(ip, regExp):
-    if (re.match(regExp, ip)):
+    if (re.search(regExp, ip)):
         return f"адрес {ip} прошёл валидацию"
     else:
         return f"адрес {ip} не прошёл валидацию"
