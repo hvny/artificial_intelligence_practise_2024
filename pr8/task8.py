@@ -5,6 +5,7 @@ from PyQt5.QtCore import QTimer
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+import psutil
 
 class CPUUsageApp(QMainWindow):
     def __init__(self):
@@ -36,9 +37,9 @@ class CPUUsageApp(QMainWindow):
         self.setCentralWidget(container)
 
     def update_plot(self):
-        cpu_load = np.random.randint(50, 60)
+        cpu_load = psutil.cpu_percent(interval=1)
         self.data.append(cpu_load)
-
+        
         #очистка предыдущего графика и создание нового
         self.ax.clear()
         self.ax.plot(list(self.data), label="CPU Usage")
